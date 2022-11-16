@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 // Define a schema
 const Schema = mongoose.Schema;
@@ -9,15 +9,15 @@ const TradeSchema = new Schema(
         buyOrderId: Number,
         sellOrderId: Number,
         createDateTime: { type: Date, default: Date.now() },
-        price: Schema.Types.Decimal128,
-        qunatity: Schema.Types.Decimal128,
-
+        price: { type: Schema.Types.Decimal128, min: [0, "Price can't be negative."] },
+        qunatity: { type: Schema.Types.Decimal128, min: [0, "Qunatity can't be negative."] },
     },
     {
         versionKey: false,
+        //_id: false
     }
 );
 
-//const TradeModel = mongoose.model("Trades", TradeSchema);
+const TradeModel = mongoose.model("Trades", TradeSchema);
 
-module.exports = { TradeSchema };
+export { TradeModel };

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 // Define a schema
 const Schema = mongoose.Schema;
@@ -9,10 +9,11 @@ const OrderbookSchema = new Schema(
         sellOrders: [Number],
     },
     {
-        versionKey: false
+        versionKey: false,
+        //_id: false
     }
 );
 
-//const OrderbookModel = mongoose.model("Orderbooks", OrderbookSchema);
+const OrderbookModel = mongoose.model("Orderbooks", OrderbookSchema);
 
-module.exports = { OrderbookSchema };
+export { OrderbookModel };

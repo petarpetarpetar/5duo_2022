@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 // Define a schema
 const Schema = mongoose.Schema;
@@ -6,21 +6,21 @@ const Schema = mongoose.Schema;
 const OrderSchema = new Schema(
     {
         id: Number,
-        currencyPair: { type: String, lowercase: false },
+        currencyPair: { type: String, enum: ['BTCUSD'] },
         createdDateTime: { type: Date, default: Date.now() },
-        type: { type: String, enum: ['OPEN', 'CLOSED'] },
-        price: Schema.Types.Decimal128,
-        quantity: Schema.Types.Decimal128,
-        filledQuantity: Schema.Types.Decimal128,
-        status: String,
+        status: { type: String, enum: ['OPEN', 'CLOSED'] },
+        type: { type: String, enum: ['BUY', 'SELL'] },
+        price: { type: Schema.Types.Decimal128, min: [0, "Price can't be negative"] },
+        quantity: { type: Schema.Types.Decimal128, min: [0, "Qunatity can't be negative"] },
+        filledQuantity: { type: Schema.Types.Decimal128, min: [0, "Can't be negative"] },
         trades: [Number]
-
     },
     {
         versionKey: false,
+        //_id: false
     }
 );
 
-//const OrderModel = mongoose.model("Orders", OrderSchema);
+const OrderModel = mongoose.model("Orders", OrderSchema);
 
-module.exports = { OrderSchema };
+export { OrderModel };
