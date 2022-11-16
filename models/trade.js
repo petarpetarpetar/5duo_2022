@@ -9,7 +9,7 @@ const TradeSchema = new Schema(
         buyOrderId: Number,
         sellOrderId: Number,
         createDateTime: { type: Date, default: Date.now() },
-        price: { type: Schema.Types.Decimal128, min: [0, "Price can't be negative."] },
+        price: { type: Number, min: [0, "Price can't be negative."] },
         qunatity: { type: Schema.Types.Decimal128, min: [0, "Qunatity can't be negative."] },
     },
     {
@@ -20,4 +20,4 @@ const TradeSchema = new Schema(
 
 const TradeModel = mongoose.model("Trades", TradeSchema);
 
-export { TradeModel };
+export { TradeModel, TradeSchema };
