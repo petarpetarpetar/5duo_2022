@@ -1,4 +1,4 @@
-# 5duo_2022
+# 5duo_2022 Petar Marković
 My solution for "5 dana u oblacima" hackathon 
 
 ## How to run it
