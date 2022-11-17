@@ -17,3 +17,6 @@ My solution for "5 dana u oblacima" hackathon
 - MongoDB Atlas (A cloud provider of MongoDB database)
 - mongoose (MongoDB driver for NodeJS)
 - Insomnia (Testing the app)
+
+## Testing
+Testing is done manually using Insomnia. You could also import collections from Postman to it.
